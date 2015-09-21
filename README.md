@@ -5,6 +5,6 @@
 [![Our Umbraco project page](https://img.shields.io/badge/our-umbraco-orange.svg)](https://our.umbraco.org/projects/developer-tools/ditflo)
 [![Chat on Gitter](https://img.shields.io/badge/gitter-join_chat-green.svg)](https://gitter.im/mattbrailsford/umbraco-ditflo)
 
-An simple workflow for Umbraco using Ditto to create strongly typed view models
+A simple workflow for Umbraco using Ditto to create strongly typed view models
 
 Run the website in `src/Our.Umbraco.DitFlo.Web`, backoffice login is `admin/admin`

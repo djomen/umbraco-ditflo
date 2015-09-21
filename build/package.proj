@@ -18,7 +18,7 @@
 	<PropertyGroup>
 		<PackageName>DitFlo</PackageName>
 		<MinUmbracoVersion>7.1.4</MinUmbracoVersion>
-		<Readme>DitFlo - a friendly workflow for Umbraco using Ditto to create strongly typed models</Readme>
+		<Readme>DitFlo - a simple workflow for Umbraco using Ditto to create strongly typed models</Readme>
 		<AuthorName>Matt Brailsford, Lee Kelleher</AuthorName>
 		<AuthorUrl>https://github.com/mattbrailsford/umbraco-ditflo/graphs/contributors</AuthorUrl>
 		<PackageLicenseName>MIT license</PackageLicenseName>
@@ -31,7 +31,7 @@
 		<PackageId>Our.Umbraco.DitFlo</PackageId>
 		<Copyright>Copyright &#169; 2015 The Outfield, Our Umbraco and other contributors</Copyright>
 		<Owners>Matt Brailsford, The Outfield</Owners>
-		<IconUrl>https://raw.githubusercontent.com/leekelleher/umbraco-ditto/master/docs/assets/img/logo.png</IconUrl>
+		<IconUrl>https://raw.githubusercontent.com/mattbrailsford/umbraco-ditflo/blob/master/docs/assets/ditflo_icon.png</IconUrl>
 		<Tags>umbraco poco mapping strongly-typed</Tags>
 		<Language>en-GB</Language>
 		<RequireLicenseAcceptance>false</RequireLicenseAcceptance>

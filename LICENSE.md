@@ -1,4 +1,4 @@
-Copyright &copy; 2015 Our Umbraco and other contributors
+Copyright &copy; 2015 2015 The Outfield, Our Umbraco and other contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in

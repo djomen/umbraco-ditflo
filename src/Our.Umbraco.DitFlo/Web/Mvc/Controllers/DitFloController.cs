@@ -31,10 +31,7 @@ namespace Our.Umbraco.DitFlo.Web.Mvc.Controllers
 
             var viewName = ControllerContext.RouteData.Values["action"].ToString();
 
-            if (ViewExists(viewName, false))
-                return View(viewName, transferModel);
-
-            return Content("");
+            return View(viewName, transferModel);
         }
 
         protected virtual ActionResult CurrentPartialView(object model = null)
@@ -46,23 +43,37 @@ namespace Our.Umbraco.DitFlo.Web.Mvc.Controllers
 
             var viewName = ControllerContext.RouteData.Values["action"].ToString();
 
-            if (ViewExists(viewName, true))
-                return PartialView(viewName, transferModel);
-
-            return Content("");
+            return PartialView(viewName, transferModel);
         }
 
-        protected bool ViewExists(string viewName, bool isPartial = false)
+        /// <summary>
+        /// Allows returning a specific named view rather than using the one from the route data
+        /// </summary>
+        /// <param name="viewName">The view path/name to return</param>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        protected new ViewResult View(string viewName, object model = null)
         {
-            var result = !isPartial
-                ? ViewEngines.Engines.FindView(ControllerContext, viewName, null)
-                : ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+            if (model == null)
+                model = CurrentPage;
 
-            if (result.View != null)
-                return true;
+            var transferModel = new DitFloTransferModel(model, _resolverContexts);
 
-            LogHelper.Warn<DitFloController>("No view file found with the name " + viewName);
-            return false;
+            return base.View(viewName, transferModel);
+
+        }
+
+        /// <summary>
+        /// See above - but this one is for returning a specific named partial view
+        /// </summary>
+        protected new ActionResult PartialView(string viewName, object model = null)
+        {
+            if (model == null)
+                model = CurrentPage;
+
+            var transferModel = new DitFloTransferModel(model, _resolverContexts);
+
+            return base.PartialView(viewName, transferModel);
         }
 
         protected virtual void RegisterValueResolverContext<TContextType>(TContextType context)

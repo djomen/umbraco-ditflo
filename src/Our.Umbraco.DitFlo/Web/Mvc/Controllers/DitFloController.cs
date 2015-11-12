@@ -31,7 +31,7 @@ namespace Our.Umbraco.DitFlo.Web.Mvc.Controllers
 
             var viewName = ControllerContext.RouteData.Values["action"].ToString();
 
-            return View(viewName, transferModel);
+            return base.View(viewName, transferModel);
         }
 
         protected virtual ActionResult CurrentPartialView(object model = null)
@@ -43,7 +43,7 @@ namespace Our.Umbraco.DitFlo.Web.Mvc.Controllers
 
             var viewName = ControllerContext.RouteData.Values["action"].ToString();
 
-            return PartialView(viewName, transferModel);
+            return base.PartialView(viewName, transferModel);
         }
 
         /// <summary>

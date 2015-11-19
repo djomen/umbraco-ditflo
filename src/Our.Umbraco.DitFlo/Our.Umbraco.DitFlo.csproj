@@ -124,8 +124,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Our.Umbraco.Ditto">
-      <HintPath>..\packages\Our.Umbraco.Ditto.0.8.0\lib\net45\Our.Umbraco.Ditto.dll</HintPath>
+    <Reference Include="Our.Umbraco.Ditto, Version=0.8.5746.20658, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Our.Umbraco.Ditto.0.8.3\lib\net45\Our.Umbraco.Ditto.dll</HintPath>
     </Reference>
     <Reference Include="SQLCE4Umbraco, Version=1.0.5261.28131, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -256,6 +257,15 @@ xcopy /s /y "$(TargetDir)Our.Umbraco.Ditto.dll" "$(SolutionDir)$(ProjectName).We
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>IF %25ComputerName%25 == MBP13-PC-BC (
+  IF NOT "$(SolutionDir)" == "*Undefined*" (
+    xcopy /s /y "$(TargetPath)" "$(SolutionDir)$(ProjectName).Web\bin\"
+    xcopy /s /y "$(TargetDir)$(ProjectName).pdb" "$(SolutionDir)$(ProjectName).Web\bin\"
+    xcopy /s /y "$(TargetDir)Our.Umbraco.Ditto.dll" "$(SolutionDir)$(ProjectName).Web\bin\"
+  )
+)</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

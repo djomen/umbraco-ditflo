@@ -2,7 +2,6 @@
 using Our.Umbraco.Ditto;
 using System.Web.Mvc;
 using Our.Umbraco.DitFlo.Models;
-using Umbraco.Core.Logging;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
 
@@ -24,49 +23,29 @@ namespace Our.Umbraco.DitFlo.Web.Mvc.Controllers
 
         protected virtual ActionResult CurrentView(object model = null)
         {
-            if (model == null)
-                model = CurrentPage;
-
-            var transferModel = new DitFloTransferModel(model, _resolverContexts);
-
             var viewName = ControllerContext.RouteData.Values["action"].ToString();
 
-            return base.View(viewName, transferModel);
+            return View(viewName, null, model);
         }
 
-        protected virtual ActionResult CurrentPartialView(object model = null)
+        protected override ViewResult View(string viewName, string masterName, object model)
         {
             if (model == null)
                 model = CurrentPage;
 
             var transferModel = new DitFloTransferModel(model, _resolverContexts);
 
+            return base.View(viewName, masterName, transferModel);
+        }
+
+        protected virtual PartialViewResult CurrentPartialView(object model = null)
+        {
             var viewName = ControllerContext.RouteData.Values["action"].ToString();
 
-            return base.PartialView(viewName, transferModel);
+            return PartialView(viewName, model);
         }
 
-        /// <summary>
-        /// Allows returning a specific named view rather than using the one from the route data
-        /// </summary>
-        /// <param name="viewName">The view path/name to return</param>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        protected new ViewResult View(string viewName, object model = null)
-        {
-            if (model == null)
-                model = CurrentPage;
-
-            var transferModel = new DitFloTransferModel(model, _resolverContexts);
-
-            return base.View(viewName, transferModel);
-
-        }
-
-        /// <summary>
-        /// See above - but this one is for returning a specific named partial view
-        /// </summary>
-        protected new ActionResult PartialView(string viewName, object model = null)
+        protected override PartialViewResult PartialView(string viewName, object model)
         {
             if (model == null)
                 model = CurrentPage;

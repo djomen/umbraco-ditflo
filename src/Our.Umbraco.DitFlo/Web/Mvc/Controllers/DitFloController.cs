@@ -2,7 +2,6 @@
 using Our.Umbraco.Ditto;
 using System.Web.Mvc;
 using Our.Umbraco.DitFlo.Models;
-using Umbraco.Core.Logging;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
 
@@ -24,45 +23,36 @@ namespace Our.Umbraco.DitFlo.Web.Mvc.Controllers
 
         protected virtual ActionResult CurrentView(object model = null)
         {
-            if (model == null)
-                model = CurrentPage;
-
-            var transferModel = new DitFloTransferModel(model, _resolverContexts);
-
             var viewName = ControllerContext.RouteData.Values["action"].ToString();
 
-            if (ViewExists(viewName, false))
-                return View(viewName, transferModel);
-
-            return Content("");
+            return View(viewName, null, model);
         }
 
-        protected virtual ActionResult CurrentPartialView(object model = null)
+        protected override ViewResult View(string viewName, string masterName, object model)
         {
             if (model == null)
                 model = CurrentPage;
 
             var transferModel = new DitFloTransferModel(model, _resolverContexts);
 
-            var viewName = ControllerContext.RouteData.Values["action"].ToString();
-
-            if (ViewExists(viewName, true))
-                return PartialView(viewName, transferModel);
-
-            return Content("");
+            return base.View(viewName, masterName, transferModel);
         }
 
-        protected bool ViewExists(string viewName, bool isPartial = false)
+        protected virtual PartialViewResult CurrentPartialView(object model = null)
         {
-            var result = !isPartial
-                ? ViewEngines.Engines.FindView(ControllerContext, viewName, null)
-                : ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+            var viewName = ControllerContext.RouteData.Values["action"].ToString();
 
-            if (result.View != null)
-                return true;
+            return PartialView(viewName, model);
+        }
 
-            LogHelper.Warn<DitFloController>("No view file found with the name " + viewName);
-            return false;
+        protected override PartialViewResult PartialView(string viewName, object model)
+        {
+            if (model == null)
+                model = CurrentPage;
+
+            var transferModel = new DitFloTransferModel(model, _resolverContexts);
+
+            return base.PartialView(viewName, transferModel);
         }
 
         protected virtual void RegisterValueResolverContext<TContextType>(TContextType context)

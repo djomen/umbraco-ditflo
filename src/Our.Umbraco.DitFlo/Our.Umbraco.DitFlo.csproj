@@ -235,10 +235,13 @@
     <Compile Include="Models\DitFloTransferModel.cs" />
     <Compile Include="Models\IDitFloViewModel.cs" />
     <Compile Include="Properties\VersionInfo.cs" />
+    <Compile Include="Web\Extensions\DitFloViewModelExtensions.cs" />
+    <Compile Include="Web\Extensions\PublishedContentExtensions.cs" />
     <Compile Include="Web\Mvc\Controllers\DitFloController.cs" />
     <Compile Include="Models\DitFloViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web\Mvc\DitFloView.cs" />
+    <Compile Include="Web\PagedCollection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

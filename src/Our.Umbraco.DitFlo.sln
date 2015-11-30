@@ -1,30 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Our.Umbraco.DitFlo.Web", "http://localhost:58086", "{DFA79354-B91F-4A16-94A3-749EA9DE619F}"
-	ProjectSection(WebsiteProperties) = preProject
-		UseIISExpress = "true"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
-		ProjectReferences = ""
-		Debug.AspNetCompiler.VirtualPath = "/localhost_58086"
-		Debug.AspNetCompiler.PhysicalPath = "Our.Umbraco.DitFlo.Web\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58086\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_58086"
-		Release.AspNetCompiler.PhysicalPath = "Our.Umbraco.DitFlo.Web\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58086\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "Our.Umbraco.DitFlo.Web\"
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Our.Umbraco.DitFlo", "Our.Umbraco.DitFlo\Our.Umbraco.DitFlo.csproj", "{201FE3BA-0909-4989-A022-053A97DFC276}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{52E68AA2-E698-44D8-AD9E-5301F716F1E3}"
@@ -50,8 +28,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DFA79354-B91F-4A16-94A3-749EA9DE619F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DFA79354-B91F-4A16-94A3-749EA9DE619F}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{201FE3BA-0909-4989-A022-053A97DFC276}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{201FE3BA-0909-4989-A022-053A97DFC276}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{201FE3BA-0909-4989-A022-053A97DFC276}.Release|Any CPU.ActiveCfg = Release|Any CPU

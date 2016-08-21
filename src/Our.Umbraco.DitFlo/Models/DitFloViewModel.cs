@@ -9,17 +9,17 @@ namespace Our.Umbraco.DitFlo.Models
     public abstract class BaseDitFloViewModel : RenderModel, IDitFloViewModel
     {
         protected BaseDitFloViewModel(
-            IPublishedContent content, 
-            CultureInfo culture = null, 
-            IEnumerable<DittoValueResolverContext> valueResolverContexts = null)
+            IPublishedContent content,
+            CultureInfo culture = null,
+            IEnumerable<DittoProcessorContext> processorContexts = null)
             : base(content, culture)
         {
-            ValueResolverContexts = valueResolverContexts ?? new List<DittoValueResolverContext>();
+            ProcessorContexts = processorContexts ?? new List<DittoProcessorContext>();
         }
 
         public IPublishedContent CurrentPage { get { return Content; } }
 
-        internal IEnumerable<DittoValueResolverContext> ValueResolverContexts { get; set; }
+        internal IEnumerable<DittoProcessorContext> ProcessorContexts { get; set; }
     }
 
     public class DitFloViewModel<TViewModel> : BaseDitFloViewModel
@@ -28,11 +28,11 @@ namespace Our.Umbraco.DitFlo.Models
         public DitFloViewModel(
             IPublishedContent content,
             CultureInfo culture = null,
-            IEnumerable<DittoValueResolverContext> valueResolverContexts = null,
+            IEnumerable<DittoProcessorContext> processorContexts = null,
             TViewModel viewModel = null)
-            : base(content, culture, valueResolverContexts)
+            : base(content, culture, processorContexts)
         {
-            if(viewModel != null)
+            if (viewModel != null)
                 View = viewModel;
         }
 
@@ -49,7 +49,7 @@ namespace Our.Umbraco.DitFlo.Models
                     }
                     else
                     {
-                        _view = Content.As<TViewModel>(valueResolverContexts: ValueResolverContexts);
+                        _view = Content.As<TViewModel>(processorContexts: ProcessorContexts);
                     }
                 }
 
@@ -60,7 +60,7 @@ namespace Our.Umbraco.DitFlo.Models
                 _view = value;
             }
         }
-        
+
     }
 
     public class DitFloViewModel : DitFloViewModel<IPublishedContent>
@@ -68,9 +68,8 @@ namespace Our.Umbraco.DitFlo.Models
         protected DitFloViewModel(
             IPublishedContent content,
             CultureInfo culture = null,
-            IEnumerable<DittoValueResolverContext> valueResolverContexts = null)
-            : base(content, culture, valueResolverContexts)
+            IEnumerable<DittoProcessorContext> processorContexts = null)
+            : base(content, culture, processorContexts)
         { }
     }
-
 }

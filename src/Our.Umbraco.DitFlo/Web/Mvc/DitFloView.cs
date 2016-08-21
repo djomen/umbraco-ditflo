@@ -26,7 +26,7 @@ namespace Our.Umbraco.DitFlo.Web.Mvc
 
             // Gather dit flow view model properties
             var model = viewData.Model;
-            var resolverContexts = new List<DittoValueResolverContext>();
+            var resolverContexts = new List<DittoProcessorContext>();
 
             var transferModel = model as DitFloTransferModel;
             if (transferModel != null)

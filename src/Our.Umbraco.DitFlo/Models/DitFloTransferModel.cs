@@ -8,17 +8,17 @@ namespace Our.Umbraco.DitFlo.Models
         public DitFloTransferModel(object model)
         {
             Model = model;
-            ValueResolverContexts = new List<DittoValueResolverContext>();
+            ValueResolverContexts = new List<DittoProcessorContext>();
         }
 
-        public DitFloTransferModel(object model, IEnumerable<DittoValueResolverContext> resovlerContexts)
+        public DitFloTransferModel(object model, IEnumerable<DittoProcessorContext> resovlerContexts)
         {
             Model = model;
-            ValueResolverContexts = new List<DittoValueResolverContext>(resovlerContexts);
+            ValueResolverContexts = new List<DittoProcessorContext>(resovlerContexts);
         }
 
         public object Model { get; set; }
 
-        public List<DittoValueResolverContext> ValueResolverContexts { get; set; }
+        public List<DittoProcessorContext> ValueResolverContexts { get; set; }
     }
 }

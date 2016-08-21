@@ -7,18 +7,13 @@ using Umbraco.Web.Mvc;
 
 namespace Our.Umbraco.DitFlo.Web.Mvc.Controllers
 {
-    public abstract class DitFloController : SurfaceController, IRenderMvcController
+    public abstract class DitFloController : SurfaceController//, IRenderController
     {
-        protected List<DittoValueResolverContext> _resolverContexts;
+        protected List<DittoProcessorContext> _processorContexts;
 
         protected DitFloController()
         {
-            _resolverContexts = new List<DittoValueResolverContext>();
-        }
-
-        public virtual ActionResult Index(RenderModel model)
-        {
-            return CurrentView(model);
+            _processorContexts = new List<DittoProcessorContext>();
         }
 
         protected virtual ActionResult CurrentView(object model = null)
@@ -33,7 +28,7 @@ namespace Our.Umbraco.DitFlo.Web.Mvc.Controllers
             if (model == null)
                 model = CurrentPage;
 
-            var transferModel = new DitFloTransferModel(model, _resolverContexts);
+            var transferModel = new DitFloTransferModel(model, _processorContexts);
 
             return base.View(viewName, masterName, transferModel);
         }
@@ -50,15 +45,15 @@ namespace Our.Umbraco.DitFlo.Web.Mvc.Controllers
             if (model == null)
                 model = CurrentPage;
 
-            var transferModel = new DitFloTransferModel(model, _resolverContexts);
+            var transferModel = new DitFloTransferModel(model, _processorContexts);
 
             return base.PartialView(viewName, transferModel);
         }
 
-        protected virtual void RegisterValueResolverContext<TContextType>(TContextType context)
-            where TContextType : DittoValueResolverContext
+        protected virtual void RegisterProcessorContext<TContextType>(TContextType context)
+            where TContextType : DittoProcessorContext
         {
-            _resolverContexts.Add(context);
+            _processorContexts.Add(context);
         }
     }
 }
